@@ -37,14 +37,14 @@ public class Cars {
     }
 
     public List<String> getWinners() {
-        int maxPosition = getMaxPosition();
+        Position maxPosition = getMaxPosition();
         return cars.stream()
                 .filter(car -> car.isPositionAt(maxPosition))
                 .map(Car::getName)
                 .toList();
     }
 
-    private int getMaxPosition() {
+    private Position getMaxPosition() {
         return cars.stream()
                 .max(Comparator.naturalOrder())
                 .get()

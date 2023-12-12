@@ -26,7 +26,7 @@ public class OutputView {
         cars.getCars()
                 .forEach(car -> Printer.printMessageUsingFormat(ROUND_RESULT_FORMAT,
                         car.getName(),
-                        POSITION_MARK.repeat(car.getPosition())));
+                        POSITION_MARK.repeat(car.getPosition().getPosition())));
         newLine();
     }
 

@@ -87,7 +87,7 @@ class CarTest {
 
             // then
             assertEquals(name, car.getName());
-            assertEquals(0, car.getPosition());
+            assertEquals(new Position(0), car.getPosition());
         }
     }
 
@@ -109,7 +109,7 @@ class CarTest {
             car.move(moveNumber);
 
             Assertions.assertThat(car.getPosition())
-                    .isEqualTo(1);
+                    .isEqualTo(new Position(1));
         }
 
         @ParameterizedTest(name = "{0}의 값이 주어지면 자동차가 정지한다.")
@@ -119,7 +119,7 @@ class CarTest {
             car.move(moveNumber);
 
             Assertions.assertThat(car.getPosition())
-                    .isEqualTo(0);
+                    .isEqualTo(new Position(0));
         }
     }
 

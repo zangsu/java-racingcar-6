@@ -21,8 +21,8 @@ public class Car implements Comparable<Car> {
         return name.getName();
     }
 
-    public int getPosition() {
-        return position.getPosition();
+    public Position getPosition() {
+        return position;
     }
 
     @Override
@@ -30,7 +30,7 @@ public class Car implements Comparable<Car> {
         return position.compareTo(o.position);
     }
 
-    public boolean isPositionAt(int maxPosition) {
-        return position.getPosition() == maxPosition;
+    public boolean isPositionAt(Position maxPosition) {
+        return position.equals(maxPosition);
     }
 }
