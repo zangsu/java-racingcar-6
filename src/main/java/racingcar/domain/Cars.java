@@ -39,7 +39,7 @@ public class Cars {
     public List<String> getWinners() {
         int maxPosition = getMaxPosition();
         return cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
+                .filter(car -> car.isPositionAt(maxPosition))
                 .map(Car::getName)
                 .toList();
     }

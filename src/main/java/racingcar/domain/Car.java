@@ -29,4 +29,8 @@ public class Car implements Comparable<Car> {
     public int compareTo(Car o) {
         return position.compareTo(o.position);
     }
+
+    public boolean isPositionAt(int maxPosition) {
+        return position.getPosition() == maxPosition;
+    }
 }
