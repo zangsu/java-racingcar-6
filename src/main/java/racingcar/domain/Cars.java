@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import racingcar.domain.movenumber.MoveNumberGenerator;
 import racingcar.exception.RacingExceptionMaker;
@@ -46,8 +47,8 @@ public class Cars {
 
     private int getMaxPosition() {
         return cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .getAsInt();
+                .max(Comparator.naturalOrder())
+                .get()
+                .getPosition();
     }
 }

@@ -1,10 +1,11 @@
 package racingcar.domain;
 
-public class Car {
+public class Car implements Comparable<Car> {
     public static final int MIN_MOVE_NUMBER = 4;
     public static final int MOVE_DISTANCE = 1;
     public static final int INIT_POSITION = 0;
     private final CarName name;
+    //todo private final Position position;
     private int position;
 
     public Car(String name) {
@@ -25,4 +26,10 @@ public class Car {
     public int getPosition() {
         return position;
     }
+
+    @Override
+    public int compareTo(Car o) {
+        return Integer.compare(position, o.position);
+    }
+
 }
