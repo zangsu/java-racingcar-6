@@ -21,6 +21,9 @@ public class NumberOfTrials {
     }
 
     public void tryOnce() {
+        if (!canTry()) {
+            throw RacingExceptionMaker.NO_MORE_TRIALS.makeException();
+        }
         numberOfTrials--;
     }
 }

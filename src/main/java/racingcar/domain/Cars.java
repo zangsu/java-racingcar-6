@@ -9,7 +9,6 @@ import racingcar.exception.RacingExceptionMaker;
 public class Cars {
     private final List<Car> cars;
 
-
     public Cars(List<String> carNames) {
         validateCarNames(carNames);
         this.cars = carNames.stream()
