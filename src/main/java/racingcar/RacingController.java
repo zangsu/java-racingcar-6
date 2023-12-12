@@ -9,11 +9,17 @@ public class RacingController {
 
     public void run(){
         Cars cars = QuitHandler.getOrQuit(() -> getCars());
+        int numberOfTrials = QuitHandler.getOrQuit(() -> getNumberOfTrials());
+
     }
 
     public Cars getCars() {
         List<String> carNames = InputView.getCarNames();
         return new Cars(carNames);
+    }
+
+    public int getNumberOfTrials() {
+        return InputView.getNumberOfTrials();
     }
 
 }
