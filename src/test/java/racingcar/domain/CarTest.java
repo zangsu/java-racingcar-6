@@ -122,4 +122,40 @@ class CarTest {
                     .isEqualTo(0);
         }
     }
+
+    @Nested
+    @DisplayName("자동차 위치 비교 테스트")
+    class 자동차_위치_비교_테스트 {
+        public static final int MOVE = 4;
+        private final Car car1 = new Car("pobi");
+        private final Car car2 = new Car("crong");
+        private final Car car3 = new Car("honux");
+
+        @BeforeEach
+        void setUp() {
+            car3.move(MOVE);
+            car3.move(MOVE);
+        }
+
+        @Test
+        @DisplayName("자동차 위치 비교 테스트: car1 == car2 < car3")
+        void 자동차_비교_테스트() {
+            // when & then
+            Assertions.assertThat(car1.compareTo(car2))
+                    .isEqualTo(0);
+            Assertions.assertThat(car1.compareTo(car3))
+                    .isEqualTo(-1);
+
+            Assertions.assertThat(car2.compareTo(car1))
+                    .isEqualTo(0);
+            Assertions.assertThat(car2.compareTo(car3))
+                    .isEqualTo(-1);
+
+            Assertions.assertThat(car3.compareTo(car1))
+                    .isEqualTo(1);
+            Assertions.assertThat(car3.compareTo(car2))
+                    .isEqualTo(1);
+        }
+    }
+
 }
