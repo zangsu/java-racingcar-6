@@ -2,8 +2,8 @@ package racingcar;
 
 import java.util.List;
 import racingcar.domain.Cars;
+import racingcar.domain.NumberOfTrials;
 import racingcar.domain.movenumber.MoveNumberGenerator;
-import racingcar.domain.movenumber.NumberOfTrials;
 import racingcar.exception.handler.QuitHandler;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;

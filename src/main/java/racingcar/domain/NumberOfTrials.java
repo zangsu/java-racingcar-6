@@ -1,4 +1,4 @@
-package racingcar.domain.movenumber;
+package racingcar.domain;
 
 import racingcar.exception.RacingExceptionMaker;
 

@@ -12,6 +12,8 @@ import racingcar.exception.RacingExceptionMaker;
 
 class CarsTest {
 
+    public static final int MOVE = 4;
+
     @Nested
     @DisplayName("자동차 생성 테스트")
     class 자동차_생성_테스트 {
@@ -108,13 +110,13 @@ class CarsTest {
             Cars cars = new Cars(names);
 
             // when
-            cars.moveAll(new FixedValueGenerator());
+            cars.moveAll(new FixedValueGenerator(MOVE));
 
             // then
             Assertions.assertThat(cars.getWinners())
                     .containsExactly(names.toArray(String[]::new));
         }
-        
+
         @Test
         @DisplayName("자동차 단독 우승 테스트")
         void 자동차_단독_우승_테스트() {
