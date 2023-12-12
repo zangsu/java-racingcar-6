@@ -3,6 +3,7 @@ package racingcar;
 import java.util.List;
 import racingcar.domain.Cars;
 import racingcar.domain.movenumber.MoveNumberGenerator;
+import racingcar.domain.movenumber.NumberOfTrials;
 import racingcar.exception.handler.QuitHandler;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -17,7 +18,7 @@ public class RacingController {
 
     public void run() {
         Cars cars = QuitHandler.getOrQuit(() -> getCars());
-        int numberOfTrials = QuitHandler.getOrQuit(() -> getNumberOfTrials());
+        NumberOfTrials numberOfTrials = QuitHandler.getOrQuit(() -> getNumberOfTrials());
         moveCars(cars, numberOfTrials);
         getWinner(cars);
     }
@@ -27,9 +28,10 @@ public class RacingController {
         OutputView.printWinner(winners);
     }
 
-    private void moveCars(Cars cars, int numberOfTrials) {
+    private void moveCars(Cars cars, NumberOfTrials numberOfTrials) {
         OutputView.printResultHead();
-        for (int i = 0; i < numberOfTrials; i++) {
+        while (numberOfTrials.canTry()) {
+            numberOfTrials.tryOnce();
             cars.moveAll(numberGenerator);
             OutputView.printRoundResult(cars);
         }
@@ -40,8 +42,9 @@ public class RacingController {
         return new Cars(carNames);
     }
 
-    public int getNumberOfTrials() {
-        return InputView.getNumberOfTrials();
+    public NumberOfTrials getNumberOfTrials() {
+        int numberOfTrials = InputView.getNumberOfTrials();
+        return new NumberOfTrials(numberOfTrials);
     }
 
 }
