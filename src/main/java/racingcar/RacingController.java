@@ -19,10 +19,16 @@ public class RacingController {
         Cars cars = QuitHandler.getOrQuit(() -> getCars());
         int numberOfTrials = QuitHandler.getOrQuit(() -> getNumberOfTrials());
         moveCars(cars, numberOfTrials);
+        getWinner(cars);
+    }
 
+    private void getWinner(Cars cars) {
+        List<String> winners = cars.getWinners();
+        OutputView.printWinner(winners);
     }
 
     private void moveCars(Cars cars, int numberOfTrials) {
+        OutputView.printResultHead();
         for (int i = 0; i < numberOfTrials; i++) {
             cars.moveAll(numberGenerator);
             OutputView.printRoundResult(cars);

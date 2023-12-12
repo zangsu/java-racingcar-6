@@ -30,4 +30,8 @@ public class OutputView {
                         "-".repeat(car.getPosition())));
         newLine();
     }
+
+    public static void printWinner(List<String> winners) {
+        Printer.printMessage("최종 우승자 : " + String.join(", ", winners));
+    }
 }
