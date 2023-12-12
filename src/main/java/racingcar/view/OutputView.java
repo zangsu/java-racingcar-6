@@ -19,7 +19,15 @@ public class OutputView {
         list.forEach(t -> Printer.printMessageUsingFormat("FORMAT", 1, 2, 3));
     }
 
-    public static void printRoundResult(Cars cars) {
+    public static void printResultHead() {
+        Printer.printMessage("실행 결과");
+    }
 
+    public static void printRoundResult(Cars cars) {
+        cars.getCars()
+                .forEach(car -> Printer.printMessageUsingFormat("%s : %s",
+                        car.getName(),
+                        "-".repeat(car.getPosition())));
+        newLine();
     }
 }

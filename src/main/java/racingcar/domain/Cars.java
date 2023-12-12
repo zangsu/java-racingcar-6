@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.Collections;
 import java.util.List;
 import racingcar.domain.movenumber.MoveNumberGenerator;
 import racingcar.exception.RacingExceptionMaker;
@@ -29,5 +30,9 @@ public class Cars {
 
     public void moveAll(MoveNumberGenerator numberGenerator) {
         cars.forEach(car -> car.move(numberGenerator.generate()));
+    }
+
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
     }
 }
