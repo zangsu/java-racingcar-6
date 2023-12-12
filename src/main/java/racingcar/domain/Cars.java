@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.List;
+import racingcar.domain.movenumber.MoveNumberGenerator;
 import racingcar.exception.RacingExceptionMaker;
 
 public class Cars {
@@ -19,10 +20,14 @@ public class Cars {
             throw RacingExceptionMaker.BLANK_INPUT.makeException();
         }
         int duplicatedCount = (int) carNames.stream()
-            .distinct()
-            .count();
+                .distinct()
+                .count();
         if (duplicatedCount != carNames.size()) {
             throw RacingExceptionMaker.DUPLICATED_NAME.makeException();
         }
+    }
+
+    public void moveAll(MoveNumberGenerator numberGenerator) {
+        cars.forEach(car -> car.move(numberGenerator.generate()));
     }
 }
